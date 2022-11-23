@@ -1,21 +1,29 @@
 import { useState, useRef } from "react";
 
 const Form = ({ onSubmit }) => {
-  const [listOfPeople, setListOfPeople] = useState<string[]>([]);
+  const [listOfPeople, setListOfPeople] = useState([]);
   const [isFair, setIsFair] = useState(true);
 
-  const input = useRef<HTMLInputElement>(null);
+  // use ref object to manipulate input
+  const input = useRef < HTMLInputElement > null;
 
   const addPerson = (e) => {
+    // prevent default behavior (reloading)
     e.preventDefault();
+    // get input value
     const value = e.target[0].value;
+    // add name to list of people
     setListOfPeople([...listOfPeople, value]);
+    // clear input
     if (input.current) input.current.value = "";
   };
 
   const removePerson = (index) => {
+    // get copy of array
     const newppl = [...listOfPeople];
+    // remove a person by his index
     newppl.splice(index, 1);
+    // set the people array to be the modified array
     setListOfPeople([...newppl]);
   };
 

@@ -1,19 +1,17 @@
 import { Menu } from "@headlessui/react";
 import { useState } from "react";
 import { getListOfPlayers } from "../utils";
-import Tooltip from "./Tooltip.tsx";
-
-type Player = {
-  name: string;
-  position: string;
-};
+import Tooltip from "./Tooltip.js";
 
 const Country = ({ country, index }) => {
-  const [players, setPlayers] = useState<Player[]>([]);
+  const [players, setPlayers] = useState([]);
 
   const getPlayers = async (code) => {
+    // get list of players for the country by country code
     await getListOfPlayers(code).then((players) => {
+      // parse the json result string
       const parsedPlayers = JSON.parse(players);
+      // set players
       setPlayers(parsedPlayers);
     });
   };

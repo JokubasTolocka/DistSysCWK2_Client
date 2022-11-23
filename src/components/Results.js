@@ -1,4 +1,4 @@
-import Country from "./Country.tsx";
+import Country from "./Country.js";
 
 const Results = ({ results }) => {
   return (
@@ -6,6 +6,7 @@ const Results = ({ results }) => {
       {results.map((result, key) => (
         <div key={key} className="flex flex-col">
           <span className="text-lg font-bold mb-2">{result.name}</span>
+          {/* display each country */}
           {result.countries.map((country, key) => (
             <Country country={country} index={key} key={key} />
           ))}

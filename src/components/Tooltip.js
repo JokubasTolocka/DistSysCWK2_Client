@@ -2,17 +2,15 @@ import ReactTooltip from "react-tooltip";
 import { useState } from "react";
 import { fetchImage } from "./utils";
 
-interface Props {
-  text: string;
-}
-
-const Tooltip = ({ text }: Props) => {
+const Tooltip = ({ text }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [image, setImage] = useState("");
 
   const onHover = async () => {
     setIsLoading(true);
+    // await for image query
     const imageSrc = await fetchImage(text);
+    // set image to be the url of image
     setImage(imageSrc);
     setIsLoading(false);
   };
