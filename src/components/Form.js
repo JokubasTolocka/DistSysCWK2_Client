@@ -5,7 +5,7 @@ const Form = ({ onSubmit }) => {
   const [isFair, setIsFair] = useState(true);
 
   // use ref object to manipulate input
-  const input = useRef < HTMLInputElement > null;
+  const input = useRef(null);
 
   const addPerson = (e) => {
     // prevent default behavior (reloading)
